@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,8 +12,8 @@
   <header>
     <nav>
       <a href="#home" class="logo">
-    <img src="Logo.png" alt="Code Dave Logo" style="height: 70px;">
-    </a>
+        <img src="Logo.png" alt="Code Dave Logo" style="height: 70px;">
+      </a>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">&#9776;</button>
       <ul class="nav-links" id="navLinks">
         <li><a href="#home" onclick="closeNav()">Home</a></li>
@@ -46,13 +45,17 @@
     <h2 class="section-title">DevsWorks</h2>
     <div class="card-grid">
       <div class="card">
-        <h3>Game Engine Development</h3>
-        <p>Developing a games With Godot Engine and explore its capabilities.</p>
+        <div>
+          <h3>Game Engine Development</h3>
+          <p>Developing a games With Godot Engine and explore its capabilities.</p>
+        </div>
         <button class="btn" onclick="openBlogModal('blog1')">Read More</button>
       </div>
       <div class="card">
-        <h3>Programming language</h3>
-        <p>Learning new programming languages and Explore It's Functions to Amaze! .</p>
+        <div>
+          <h3>Programming language</h3>
+          <p>Learning new programming languages and Explore It's Functions to Amaze! .</p>
+        </div>
         <button class="btn" onclick="openBlogModal('blog2')">Read More</button>
       </div>
     </div>
@@ -63,18 +66,24 @@
     <h2 class="section-title">APK Downloads</h2>
     <div class="card-grid">
       <div class="card">
-        <h3>Hero Pack v1.0.1</h3>
-        <p>Version 1.0.1 - Still Developing and added a new world but still not complete only the level One is playable!</p>
+        <div>
+          <h3>Hero Pack v1.0.1</h3>
+          <p>Version 1.0.1 - Still Developing and added a new world but still not complete only the level One is playable!</p>
+        </div>
         <button class="btn" onclick="openAppModal('app1')">View</button>
       </div>
       <div class="card">
-        <h3>Slendrene v2.6</h3>
-        <p>Version 2.6.0 - Still In Going Bugs Fixing And Improving World!</p>
+        <div>
+          <h3>Slendrene v2.6</h3>
+          <p>Version 2.6.0 - Still In Going Bugs Fixing And Improving World!</p>
+        </div>
         <button class="btn" onclick="openAppModal('app2')">View</button>
       </div>
       <div class="card">
-        <h3>Legacy!</h3>
-        <p>Coming Soon!</p>
+        <div>
+          <h3>Legacy!</h3>
+          <p>Coming Soon!</p>
+        </div>
         <button class="btn" onclick="openAppModal('app3')">View</button>
       </div>
     </div>
@@ -85,14 +94,18 @@
     <h2 class="section-title">Social Media</h2>
     <div class="card-grid">
       <div class="card">
-        <h3>GitHub</h3>
-        <p>Check out my source repositories and ongoing coding projects.</p>
-        <a href="https://github.com/CodeDave" class="btn">Visit GitHub</a>
+        <div>
+          <h3>GitHub</h3>
+          <p>Check out my source repositories and ongoing coding projects.</p>
+        </div>
+        <a href="https://github.com/CodeDave" class="btn" target="_blank">Visit GitHub</a>
       </div>
       <div class="card">
-        <h3>Discord</h3>
-        <p>Join our community for Game Updates and Discussions.</p>
-        <a href="https://discord.gg/radP34kju" class="btn">Join Server</a>
+        <div>
+          <h3>Discord</h3>
+          <p>Join our community for Game Updates and Discussions.</p>
+        </div>
+        <a href="https://discord.gg/radP34kju" class="btn" target="_blank">Join Server</a>
       </div>
     </div>
   </section>
@@ -101,9 +114,15 @@
   <div id="infoModal" class="modal">
     <div class="modal-content">
       <span class="close-btn" onclick="closeModal()">&times;</span>
-      <h2 id="modalTitle" style="color: var(--accent-color); margin-bottom: 0.5rem; font-size: 1.5rem;">Title</h2>
-      <p id="modalMeta" style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.9rem;">Subheading / Meta info</p>
       
+      <h2 id="modalTitle" style="color: var(--accent-color); margin-bottom: 0.3rem; font-size: 1.5rem;">Title</h2>
+      <p id="modalMeta" style="color: var(--text-muted); margin-bottom: 0.75rem; font-size: 0.9rem;">Subheading / Meta info</p>
+      
+      <!-- Optional Image Container (Placed right under the title/meta info) -->
+      <div id="modalImgContainer" style="display: none; margin-bottom: 1rem; border-radius: 8px; overflow: hidden; background: rgba(15, 23, 42, 0.4); text-align: center;">
+        <img id="modalImg" src="" alt="Project Preview" style="width: 100%; max-height: 220px; object-fit: cover; display: block;">
+      </div>
+
       <div id="modalBody" style="margin-bottom: 1.5rem; color: var(--text-muted); line-height: 1.6; font-size: 0.95rem;">
         Content goes here.
       </div>
@@ -133,25 +152,31 @@
       navLinks.classList.remove('active');
     }
 
-    // App and Blog Data
+    // App and Blog Data (Add an optional 'image' property whenever you want to display a photo)
     const appsData = {
       app1: {
         title: "Hero Pack v1.0.1",
         meta: "Version: 1.0.1 | Size: 31 MB",
         desc: "A classic old game just like the Super Mario Game but different Assets Dowload and Explore the game.",
-        downloadUrl: "https://drive.google.com/file/d/1tHTmI0scE2JO4XAUGVbGHvQILWJzsKd3/view?usp=drive_link"
+        image: "Hero.PNG", // Leave blank ("") if no photo is added; layout remains clean!
+        downloadUrl: "https://drive.google.com/file/d/1tHTmI0scE2JO4XAUGVbGHvQILWJzsKd3/view?usp=drive_link",
+        buttonText: "Download APK Now"
       },
       app2: {
         title: "Slendrene v2.6",
         meta: "Version: 2.6.0 | Size: 210 MB",
         desc: "Explore the mysterious place of Slendrene and find The balls before Rene Finds You!!",
-        downloadUrl: "https://drive.google.com/file/d/176ckZscquoQejfdbBy_38RNaScRwTQc6/view?usp=drive_link"
+        image: "Rene.png", // Leave blank ("") if no photo is added
+        downloadUrl: "https://drive.google.com/file/d/176ckZscquoQejfdbBy_38RNaScRwTQc6/view?usp=drive_link",
+        buttonText: "Download APK Now"
       },
       app3: {
         title: "Legacy!",
         meta: "Version: Unknown | Size: 0 MB",
         desc: "Coming Soon! For Now.",
-        downloadUrl: "#"
+        image: "", // Leave blank ("") if no photo is added
+        downloadUrl: "#", 
+        buttonText: "Coming Soon"
       }
     };
 
@@ -159,6 +184,7 @@
       blog1: {
         title: "Godot V4.7",
         meta: "Published: October 2026 | Author: Code Dave!",
+        image: "", // Leave blank ("") if no photo is added
         content: `
           <p style="margin-bottom: 1rem;">Godot v4.7 brings powerful upgrades to game performance, rendering pipelines, and GDScript capabilities, making it even faster to build immersive 2D and 3D indie titles.</p>
           <p style="margin-bottom: 1rem;">With enhanced physics servers, improved asynchronous scene loading, and refined mobile touch controls, developers can deliver smoother frame rates and more reliable cross-platform builds than ever before.</p>
@@ -167,6 +193,7 @@
       blog2: {
         title: "C# And Python!",
         meta: "Published: September 2026 | Author: Dave Dev",
+        image: "", // Leave blank ("") if no photo is added
         content: `
           <p style="margin-bottom: 1rem;">Godot offers flexible language support for game developers, seamlessly bridging C# for high-performance systems and GDScript—a lightweight language heavily inspired by Python's clean syntax.</p>
           <p style="margin-bottom: 1rem;">Whether you are scripting rapid gameplay mechanics using GDScript's simple structure or leveraging C# for complex 2D/3D physics, state machines, and heavy data management, Godot makes multi-language game development fast and intuitive.</p>
@@ -179,7 +206,22 @@
       document.getElementById("modalTitle").innerText = app.title;
       document.getElementById("modalMeta").innerText = app.meta;
       document.getElementById("modalBody").innerHTML = `<p>${app.desc}</p>`;
-      document.getElementById("modalFooter").innerHTML = `<a href="${app.downloadUrl}" class="btn">Download APK Now</a>`;
+      
+      // Handle Modal Image Display Dynamically
+      const imgContainer = document.getElementById("modalImgContainer");
+      const modalImg = document.getElementById("modalImg");
+      if (app.image && app.image.trim() !== "") {
+        modalImg.src = app.image;
+        imgContainer.style.display = "block";
+      } else {
+        imgContainer.style.display = "none";
+      }
+
+      if (app.downloadUrl && app.downloadUrl !== "#") {
+        document.getElementById("modalFooter").innerHTML = `<a href="${app.downloadUrl}" class="btn" target="_blank">${app.buttonText}</a>`;
+      } else {
+        document.getElementById("modalFooter").innerHTML = `<button class="btn" style="opacity: 0.6; cursor: not-allowed;" onclick="event.preventDefault();">${app.buttonText}</button>`;
+      }
       
       document.getElementById("infoModal").style.display = "flex";
       document.body.classList.add("modal-open");
@@ -190,6 +232,17 @@
       document.getElementById("modalTitle").innerText = blog.title;
       document.getElementById("modalMeta").innerText = blog.meta;
       document.getElementById("modalBody").innerHTML = blog.content;
+      
+      // Handle Modal Image Display Dynamically
+      const imgContainer = document.getElementById("modalImgContainer");
+      const modalImg = document.getElementById("modalImg");
+      if (blog.image && blog.image.trim() !== "") {
+        modalImg.src = blog.image;
+        imgContainer.style.display = "block";
+      } else {
+        imgContainer.style.display = "none";
+      }
+
       document.getElementById("modalFooter").innerHTML = `<button class="btn" onclick="closeModal()">Close Information</button>`;
       
       document.getElementById("infoModal").style.display = "flex";
