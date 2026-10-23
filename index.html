@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Dave Dev - Home</title>
+  <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav>
+      <a href="#home" class="logo">
+    <img src="logo.png" alt="Code Dave Logo" style="height: 70px;">
+    </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">&#9776;</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" onclick="closeNav()">Home</a></li>
+        <li><a href="#about" onclick="closeNav()">About</a></li>
+        <li><a href="#blog" onclick="closeNav()">DevsBlog</a></li>
+        <li><a href="#apk" onclick="closeNav()">APK</a></li>
+        <li><a href="#social" onclick="closeNav()">Social Media</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Home Section -->
+  <section id="home" class="hero">
+    <h1>Code Dave!</h1>
+    <p>Explore software developments, game projects, blogs, and standalone application builds all in one place.</p>
+    <a href="#apk" class="btn">Download Latest APK</a>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2 class="section-title">About Me & Projects</h2>
+    <p style="color: var(--text-muted); font-size: 1rem;">
+      Hi! I'm a developer focusing on desktop applications, game development, and custom utility tools. This hub tracks my latest work, technical blogs, and downloadable builds.
+    </p>
+  </section>
+
+  <!-- DevsBlog Section -->
+  <section id="blog">
+    <h2 class="section-title">DevsWorks</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Game Engine Development</h3>
+        <p>A guide on structuring clean, maintainable HTML and CSS layouts using flexbox and CSS variables.</p>
+        <button class="btn" onclick="openBlogModal('blog1')">Read More</button>
+      </div>
+      <div class="card">
+        <h3>Programming language</h3>
+        <p>Insights into building responsive mechanics, handling asset loading, and smooth state transitions.</p>
+        <button class="btn" onclick="openBlogModal('blog2')">Read More</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- APK Section -->
+  <section id="apk">
+    <h2 class="section-title">APK Downloads</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Hero Pack v1.0</h3>
+        <p>Version 1.0.4 - Tools for desktop customization, asset handling, and media processing.</p>
+        <button class="btn" onclick="openAppModal('app1')">View</button>
+      </div>
+      <div class="card">
+        <h3>Slendrene v2.6</h3>
+        <p>Version 2.6.0 - Fast-paced 2D retro action game built with custom physics and audio.</p>
+        <button class="btn" onclick="openAppModal('app2')">View</button>
+      </div>
+      <div class="card">
+        <h3>Legacy! v1.0</h3>
+        <p>Version 1.0.0 - Lightweight productivity and task management app tailored for developers.</p>
+        <button class="btn" onclick="openAppModal('app3')">View</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Media Section -->
+  <section id="social">
+    <h2 class="section-title">Social Media</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>GitHub</h3>
+        <p>Check out my source repositories and ongoing coding projects.</p>
+        <a href="#" class="btn">Visit GitHub</a>
+      </div>
+      <div class="card">
+        <h3>Discord</h3>
+        <p>Join our community for Game Updates and Discussions.</p>
+        <a href="#" class="btn">Join Server</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shared Modal Popup Window -->
+  <div id="infoModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle" style="color: var(--accent-color); margin-bottom: 0.5rem; font-size: 1.5rem;">Title</h2>
+      <p id="modalMeta" style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.9rem;">Subheading / Meta info</p>
+      
+      <div id="modalBody" style="margin-bottom: 1.5rem; color: var(--text-muted); line-height: 1.6; font-size: 0.95rem;">
+        Content goes here.
+      </div>
+
+      <div id="modalFooter">
+        <!-- Dynamic Action Button -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Code Dave. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript Code -->
+  <script>
+    // Mobile Navigation Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    function closeNav() {
+      navLinks.classList.remove('active');
+    }
+
+    // App and Blog Data
+    const appsData = {
+      app1: {
+        title: "Hero Pack v1.0",
+        meta: "Version: 1.0.4 | Size: 15 MB",
+        desc: "This app provides tools for desktop customization, asset handling, and media processing. Features include real-time performance tracking and integrated utility scripts.",
+        downloadUrl: "#"
+      },
+      app2: {
+        title: "Slendrene v2.6",
+        meta: "Version: 2.6.0 | Size: 45 MB",
+        desc: "A fast-paced 2D retro action game featuring custom touch controls, dynamic particle effects, and an immersive soundtrack powered by custom audio engines.",
+        downloadUrl: "#"
+      },
+      app3: {
+        title: "Legacy! v1.0",
+        meta: "Version: 1.0.0 | Size: 12 MB",
+        desc: "A lightweight productivity and task management app tailored specifically for developers to track sprints, organize bugs, and manage coding milestones on the go.",
+        downloadUrl: "#"
+      }
+    };
+
+    const blogsData = {
+      blog1: {
+        title: "Godot V4.7",
+        meta: "Published: October 2026 | Author: Code Dave!",
+        content: `
+          <p style="margin-bottom: 1rem;">Godot v4.7 brings powerful upgrades to game performance, rendering pipelines, and GDScript capabilities, making it even faster to build immersive 2D and 3D indie titles.</p>
+          <p style="margin-bottom: 1rem;">With enhanced physics servers, improved asynchronous scene loading, and refined mobile touch controls, developers can deliver smoother frame rates and more reliable cross-platform builds than ever before.</p>
+        `
+      },
+      blog2: {
+        title: "C# And Python!",
+        meta: "Published: September 2026 | Author: Dave Dev",
+        content: `
+          <p style="margin-bottom: 1rem;">Godot offers flexible language support for game developers, seamlessly bridging C# for high-performance systems and GDScript—a lightweight language heavily inspired by Python's clean syntax.</p>
+          <p style="margin-bottom: 1rem;">Whether you are scripting rapid gameplay mechanics using GDScript's simple structure or leveraging C# for complex 2D/3D physics, state machines, and heavy data management, Godot makes multi-language game development fast and intuitive.</p>
+        `
+      }
+    };
+
+    function openAppModal(appKey) {
+      const app = appsData[appKey];
+      document.getElementById("modalTitle").innerText = app.title;
+      document.getElementById("modalMeta").innerText = app.meta;
+      document.getElementById("modalBody").innerHTML = `<p>${app.desc}</p>`;
+      document.getElementById("modalFooter").innerHTML = `<a href="${app.downloadUrl}" class="btn">Download APK Now</a>`;
+      
+      document.getElementById("infoModal").style.display = "flex";
+      document.body.classList.add("modal-open");
+    }
+
+    function openBlogModal(blogKey) {
+      const blog = blogsData[blogKey];
+      document.getElementById("modalTitle").innerText = blog.title;
+      document.getElementById("modalMeta").innerText = blog.meta;
+      document.getElementById("modalBody").innerHTML = blog.content;
+      document.getElementById("modalFooter").innerHTML = `<button class="btn" onclick="closeModal()">Close Information</button>`;
+      
+      document.getElementById("infoModal").style.display = "flex";
+      document.body.classList.add("modal-open");
+    }
+
+    function closeModal() {
+      document.getElementById("infoModal").style.display = "none";
+      document.body.classList.remove("modal-open");
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById("infoModal");
+      if (event.target == modal) {
+        closeModal();
+      }
+    }
+  </script>
+
+</body>
+</html>
