@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Dave Dev - Home</title>
+  <title>Code Devs! - Home</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -28,7 +28,7 @@
   <!-- Home Section -->
   <section id="home" class="hero">
     <h1>Code Dave!</h1>
-    <p>Explore software developments, game projects, blogs, and standalone application builds all in one place.</p>
+    <p>This is Dev Dave! Exploring the world of game Development Alone.</p>
     <a href="#apk" class="btn">Download Latest APK</a>
   </section>
 
@@ -36,7 +36,7 @@
   <section id="about">
     <h2 class="section-title">About Website!</h2>
     <p style="color: var(--text-muted); font-size: 1rem;">
-      Hi! I'm a developer focusing on desktop applications, game development, and custom utility tools. This hub tracks my latest work, technical blogs, and downloadable builds.
+      Hi! I'm Mark Dave a small game Developer aiming for good quility of gaming because I'm starting to be game developer And now I'm Starting to build in 2D In the near future I'm starting in 3D.
     </p>
   </section>
 
@@ -63,7 +63,7 @@
 
   <!-- APK Section -->
   <section id="apk">
-    <h2 class="section-title">APK Downloads</h2>
+    <h2 class="section-title">APK & App Downloads</h2>
     <div class="card-grid">
       <div class="card">
         <div>
@@ -98,7 +98,7 @@
           <h3>GitHub</h3>
           <p>Check out my source repositories and ongoing coding projects.</p>
         </div>
-        <a href="https://github.com/CodeDave" class="btn" target="_blank">Visit GitHub</a>
+        <a href="https://github.com/markdavebutigan-ship-it" class="btn" target="_blank">Visit GitHub</a>
       </div>
       <div class="card">
         <div>
@@ -118,7 +118,7 @@
       <h2 id="modalTitle" style="color: var(--accent-color); margin-bottom: 0.3rem; font-size: 1.5rem;">Title</h2>
       <p id="modalMeta" style="color: var(--text-muted); margin-bottom: 0.75rem; font-size: 0.9rem;">Subheading / Meta info</p>
       
-      <!-- Optional Image Container (Placed right under the title/meta info) -->
+      <!-- Optional Image Container -->
       <div id="modalImgContainer" style="display: none; margin-bottom: 1rem; border-radius: 8px; overflow: hidden; background: rgba(15, 23, 42, 0.4); text-align: center;">
         <img id="modalImg" src="" alt="Project Preview" style="width: 100%; max-height: 220px; object-fit: cover; display: block;">
       </div>
@@ -127,8 +127,9 @@
         Content goes here.
       </div>
 
-      <div id="modalFooter">
-        <!-- Dynamic Action Button -->
+      <!-- Footer container for side-by-side or single download/action buttons -->
+      <div id="modalFooter" style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <!-- Dynamic Action Buttons -->
       </div>
     </div>
   </div>
@@ -152,31 +153,37 @@
       navLinks.classList.remove('active');
     }
 
-    // App and Blog Data (Add an optional 'image' property whenever you want to display a photo)
+    // App and Blog Data with Android & Windows Download Links
     const appsData = {
       app1: {
         title: "Hero Pack v1.0.1",
-        meta: "Version: 1.0.1 | Size: 31 MB",
-        desc: "A classic old game just like the Super Mario Game but different Assets Dowload and Explore the game.",
-        image: "Hero.PNG", // Leave blank ("") if no photo is added; layout remains clean!
+        meta: "Version: 1.0.1 | Size: 31 MB | Leave Development Phase",
+        desc: "A classic old game just like the Super Mario Game but different Assets Download and Explore the game.",
+        image: "Hero.PNG",
         downloadUrl: "https://drive.google.com/file/d/1tHTmI0scE2JO4XAUGVbGHvQILWJzsKd3/view?usp=drive_link",
-        buttonText: "Download APK Now"
+        buttonText: "Download APK Now",
+        windowsUrl: "#", // Leave as "#" or leave blank if no Windows version exists (button will auto-hide)
+        windowsButtonText: "Download for Windows"
       },
       app2: {
         title: "Slendrene v2.6",
-        meta: "Version: 2.6.0 | Size: 210 MB",
+        meta: "Version: 2.6.0 | Size: 210 MB | Testing Phase | In Development.",
         desc: "Explore the mysterious place of Slendrene and find The balls before Rene Finds You!!",
-        image: "Rene.png", // Leave blank ("") if no photo is added
+        image: "Rene.png",
         downloadUrl: "https://drive.google.com/file/d/176ckZscquoQejfdbBy_38RNaScRwTQc6/view?usp=drive_link",
-        buttonText: "Download APK Now"
+        buttonText: "Download APK Now",
+        windowsUrl: "", // Example of hidden Windows button when no link is added
+        windowsButtonText: "Download for Windows"
       },
       app3: {
         title: "Legacy!",
         meta: "Version: Unknown | Size: 0 MB",
         desc: "Coming Soon! For Now.",
-        image: "", // Leave blank ("") if no photo is added
+        image: "",
         downloadUrl: "#", 
-        buttonText: "Coming Soon"
+        buttonText: "Coming Soon",
+        windowsUrl: "",
+        windowsButtonText: "Download for Windows"
       }
     };
 
@@ -184,7 +191,7 @@
       blog1: {
         title: "Godot V4.7",
         meta: "Published: October 2026 | Author: Code Dave!",
-        image: "", // Leave blank ("") if no photo is added
+        image: "",
         content: `
           <p style="margin-bottom: 1rem;">Godot v4.7 brings powerful upgrades to game performance, rendering pipelines, and GDScript capabilities, making it even faster to build immersive 2D and 3D indie titles.</p>
           <p style="margin-bottom: 1rem;">With enhanced physics servers, improved asynchronous scene loading, and refined mobile touch controls, developers can deliver smoother frame rates and more reliable cross-platform builds than ever before.</p>
@@ -193,7 +200,7 @@
       blog2: {
         title: "C# And Python!",
         meta: "Published: September 2026 | Author: Dave Dev",
-        image: "", // Leave blank ("") if no photo is added
+        image: "",
         content: `
           <p style="margin-bottom: 1rem;">Godot offers flexible language support for game developers, seamlessly bridging C# for high-performance systems and GDScript—a lightweight language heavily inspired by Python's clean syntax.</p>
           <p style="margin-bottom: 1rem;">Whether you are scripting rapid gameplay mechanics using GDScript's simple structure or leveraging C# for complex 2D/3D physics, state machines, and heavy data management, Godot makes multi-language game development fast and intuitive.</p>
@@ -217,11 +224,22 @@
         imgContainer.style.display = "none";
       }
 
+      // Build Action Buttons Footer (Android APK + Optional Windows Download)
+      let footerHTML = "";
+
+      // Android Button Handler
       if (app.downloadUrl && app.downloadUrl !== "#") {
-        document.getElementById("modalFooter").innerHTML = `<a href="${app.downloadUrl}" class="btn" target="_blank">${app.buttonText}</a>`;
+        footerHTML += `<a href="${app.downloadUrl}" class="btn" target="_blank">${app.buttonText}</a>`;
       } else {
-        document.getElementById("modalFooter").innerHTML = `<button class="btn" style="opacity: 0.6; cursor: not-allowed;" onclick="event.preventDefault();">${app.buttonText}</button>`;
+        footerHTML += `<button class="btn" style="opacity: 0.6; cursor: not-allowed;" onclick="event.preventDefault();">${app.buttonText}</button>`;
       }
+
+      // Windows Button Handler (Only renders if a valid URL is provided)
+      if (app.windowsUrl && app.windowsUrl.trim() !== "" && app.windowsUrl !== "#") {
+        footerHTML += `<a href="${app.windowsUrl}" class="btn" style="background-color: #10b981; color: #ffffff;" target="_blank">${app.windowsButtonText}</a>`;
+      }
+
+      document.getElementById("modalFooter").innerHTML = footerHTML;
       
       document.getElementById("infoModal").style.display = "flex";
       document.body.classList.add("modal-open");
