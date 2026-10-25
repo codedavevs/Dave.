@@ -19,6 +19,7 @@
         <li><a href="#home" onclick="closeNav()">Home</a></li>
         <li><a href="#about" onclick="closeNav()">About</a></li>
         <li><a href="#blog" onclick="closeNav()">DevsBlog</a></li>
+        <li><a href="#patchnotes" onclick="closeNav()">Patch Notes</a></li>
         <li><a href="#apk" onclick="closeNav()">APK</a></li>
         <li><a href="#social" onclick="closeNav()">Social Media</a></li>
       </ul>
@@ -28,7 +29,7 @@
   <!-- Home Section -->
   <section id="home" class="hero">
     <h1>Code Dave!</h1>
-    <p>This is Dev Dave! Exploring the world of game Development Alone.</p>
+    <p>This is Code Dave! Exploring the world of game Development Alone.</p>
     <a href="#apk" class="btn">Download Latest APK</a>
   </section>
 
@@ -42,7 +43,7 @@
 
   <!-- DevsBlog Section -->
   <section id="blog">
-    <h2 class="section-title">DevsWorks</h2>
+    <h2 class="section-title">Dev Tools</h2>
     <div class="card-grid">
       <div class="card">
         <div>
@@ -61,27 +62,49 @@
     </div>
   </section>
 
+  <!-- Patch Notes Section (Added in the middle) -->
+  <section id="patchnotes">
+    <h2 class="section-title">Patch Notes</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div>
+          <h3>Hero Pack v1.0.2 Logs</h3>
+          <p>Released new UI updates, polished game icons, and updated fresh download links.</p>
+        </div>
+        <button class="btn" onclick="openPatchModal('patch1')">View</button>
+      </div>
+      <div class="card">
+        <div>
+          <h3>Slendrene v2.7.2 Logs</h3>
+          <p>Important hotfix addressing performance drops, capping framerates, and bug fixes.</p>
+        </div>
+        <button class="btn" onclick="openPatchModal('patch2')">View</button>
+      </div>
+    </div>
+  </section>
+
   <!-- APK Section -->
   <section id="apk">
-    <h2 class="section-title">APK & App Downloads</h2>
+    <h2 class="section-title">Downloads</h2>
     <div class="card-grid">
       <div class="card">
         <div>
           <h3>Hero Pack v1.0.2</h3>
-          <p>Version 1.0.2 - Updated Game Icons to make look good and a new link. </p>
+          <p>Android - Version 1.0.2 </p>
         </div>
         <button class="btn" onclick="openAppModal('app1')">View</button>
       </div>
       <div class="card">
         <div>
-          <h3>Slendrene v2.6</h3>
-          <p>Version 2.6.0 - Update Pc Version  But Version v1.0</p>
+          <h3>Slendrene v2.7.2</h3>
+          <p>Android - Version 2.7.2 </p>
+          <p>Window - Version 1.0.2 </p>
         </div>
         <button class="btn" onclick="openAppModal('app2')">View</button>
       </div>
       <div class="card">
         <div>
-          <h3>Legacy!</h3>
+          <h3>Unknown.</h3>
           <p>Coming Soon!</p>
         </div>
         <button class="btn" onclick="openAppModal('app3')">View</button>
@@ -153,7 +176,7 @@
       navLinks.classList.remove('active');
     }
 
-    // App and Blog Data with Android & Windows Download Links
+    // App Data
     const appsData = {
       app1: {
         title: "Hero Pack v1.0.2",
@@ -162,21 +185,21 @@
         image: "Hero.PNG",
         downloadUrl: "https://drive.google.com/file/d/1N1-Rft35AF13iVY9mjGbNvbrE7OreHR5/view?usp=drive_link",
         buttonText: "Download APK Now",
-        windowsUrl: "#", // Leave as "#" or leave blank if no Windows version exists (button will auto-hide)
+        windowsUrl: "#",
         windowsButtonText: "Download for Windows"
       },
       app2: {
-        title: "Slendrene v2.6",
-        meta: "Version: 2.6.0 | Size: 210 MB | Testing Phase | In Development.",
+        title: "Slendrene v2.7.2",
+        meta: "Version: 2.7.2 | Size: 210 MB | Testing Phase | In Development.",
         desc: "Explore the mysterious place of Slendrene and find The balls before Rene Finds You!!",
         image: "Rene.png",
-        downloadUrl: "https://drive.google.com/file/d/176ckZscquoQejfdbBy_38RNaScRwTQc6/view?usp=drive_link",
+        downloadUrl: "https://drive.google.com/file/d/1OIg1mgJmtIOAJERtUR5VwQDFDdgsyki0/view?usp=drive_link",
         buttonText: "Download APK Now",
-        windowsUrl: "https://drive.google.com/file/d/1rG1ycx8c1SxEbDEtN6_2ZAdiS5fC_pfT/view?usp=drive_link", // Example of hidden Windows button when no link is added
+        windowsUrl: "https://drive.google.com/file/d/1Qmz9jqw1HBa8cjQWBfIDsTKvAHUT9QHP/view?usp=drive_link",
         windowsButtonText: "Download for Windows"
       },
       app3: {
-        title: "Legacy!",
+        title: "Unknown.",
         meta: "Version: Unknown | Size: 0 MB",
         desc: "Coming Soon! For Now.",
         image: "",
@@ -187,6 +210,7 @@
       }
     };
 
+    // Blog Data
     const blogsData = {
       blog1: {
         title: "Godot V4.7",
@@ -208,13 +232,44 @@
       }
     };
 
+    // Patch Notes Data
+    const patchData = {
+      patch1: {
+        title: "Hero Pack v1.0.2 - Patch Notes",
+        meta: "Release Date: October 2026 | Status: Stable Build",
+        image: "Hero.PNG",
+        content: `
+          <p style="margin-bottom: 0.75rem;"><strong>What's New in v1.0.2:</strong></p>
+          <ul style="margin-left: 1.2rem; margin-bottom: 1rem; color: var(--text-muted);">
+            <li>Official graduation from early development phase.</li>
+            <li>Completely overhauled high-resolution game icons and dashboard thumbnails.</li>
+            <li>Updated Google Drive distribution links for faster and more reliable downloads.</li>
+            <li>Minor bug fixes on level collision boundaries.</li>
+          </ul>
+        `
+      },
+      patch2: {
+        title: "Slendrene v2.7.2 - Patch Notes",
+        meta: "Release Date: October 2026 | Status: Optimization Patch",
+        image: "Rene.png",
+        content: `
+          <p style="margin-bottom: 0.75rem;"><strong>Performance & Bug Fixes in v2.7.2:</strong></p>
+          <ul style="margin-left: 1.2rem; margin-bottom: 1rem; color: var(--text-muted);">
+            <li>Implemented strict frame-rate capping (locked at 60 FPS) to mitigate severe lag issues.</li>
+            <li>Optimized texture rendering pipelines to reduce memory spikes.</li>
+            <li>Addressed intermittent frame drop anomalies on lower-end mobile chipsets.</li>
+            <li>Adjusted monster pathfinding tracking logic.</li>
+          </ul>
+        `
+      }
+    };
+
     function openAppModal(appKey) {
       const app = appsData[appKey];
       document.getElementById("modalTitle").innerText = app.title;
       document.getElementById("modalMeta").innerText = app.meta;
       document.getElementById("modalBody").innerHTML = `<p>${app.desc}</p>`;
       
-      // Handle Modal Image Display Dynamically
       const imgContainer = document.getElementById("modalImgContainer");
       const modalImg = document.getElementById("modalImg");
       if (app.image && app.image.trim() !== "") {
@@ -224,23 +279,18 @@
         imgContainer.style.display = "none";
       }
 
-      // Build Action Buttons Footer (Android APK + Optional Windows Download)
       let footerHTML = "";
-
-      // Android Button Handler
       if (app.downloadUrl && app.downloadUrl !== "#") {
         footerHTML += `<a href="${app.downloadUrl}" class="btn" target="_blank">${app.buttonText}</a>`;
       } else {
         footerHTML += `<button class="btn" style="opacity: 0.6; cursor: not-allowed;" onclick="event.preventDefault();">${app.buttonText}</button>`;
       }
 
-      // Windows Button Handler (Only renders if a valid URL is provided)
       if (app.windowsUrl && app.windowsUrl.trim() !== "" && app.windowsUrl !== "#") {
         footerHTML += `<a href="${app.windowsUrl}" class="btn" style="background-color: #10b981; color: #ffffff;" target="_blank">${app.windowsButtonText}</a>`;
       }
 
       document.getElementById("modalFooter").innerHTML = footerHTML;
-      
       document.getElementById("infoModal").style.display = "flex";
       document.body.classList.add("modal-open");
     }
@@ -251,7 +301,6 @@
       document.getElementById("modalMeta").innerText = blog.meta;
       document.getElementById("modalBody").innerHTML = blog.content;
       
-      // Handle Modal Image Display Dynamically
       const imgContainer = document.getElementById("modalImgContainer");
       const modalImg = document.getElementById("modalImg");
       if (blog.image && blog.image.trim() !== "") {
@@ -262,7 +311,26 @@
       }
 
       document.getElementById("modalFooter").innerHTML = `<button class="btn" onclick="closeModal()">Close Information</button>`;
+      document.getElementById("infoModal").style.display = "flex";
+      document.body.classList.add("modal-open");
+    }
+
+    function openPatchModal(patchKey) {
+      const patch = patchData[patchKey];
+      document.getElementById("modalTitle").innerText = patch.title;
+      document.getElementById("modalMeta").innerText = patch.meta;
+      document.getElementById("modalBody").innerHTML = patch.content;
       
+      const imgContainer = document.getElementById("modalImgContainer");
+      const modalImg = document.getElementById("modalImg");
+      if (patch.image && patch.image.trim() !== "") {
+        modalImg.src = patch.image;
+        imgContainer.style.display = "block";
+      } else {
+        imgContainer.style.display = "none";
+      }
+
+      document.getElementById("modalFooter").innerHTML = `<button class="btn" onclick="closeModal()">Close Patch Notes</button>`;
       document.getElementById("infoModal").style.display = "flex";
       document.body.classList.add("modal-open");
     }
