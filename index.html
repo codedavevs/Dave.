@@ -69,14 +69,14 @@
       <div class="card">
         <div>
           <h3>Hero Pack v1.0.2 Logs</h3>
-          <p>Released new UI updates, polished game icons, and updated fresh download links.</p>
+          <p>Bug Fixes And Improve Gameplay.</p>
         </div>
         <button class="btn" onclick="openPatchModal('patch1')">View</button>
       </div>
       <div class="card">
         <div>
           <h3>Slendrene v2.7.2 Logs</h3>
-          <p>Important hotfix addressing performance drops, capping framerates, and bug fixes.</p>
+          <p>Bug Fixes And Improve Gameplay.</p>
         </div>
         <button class="btn" onclick="openPatchModal('patch2')">View</button>
       </div>
@@ -241,10 +241,7 @@
         content: `
           <p style="margin-bottom: 0.75rem;"><strong>What's New in v1.0.2:</strong></p>
           <ul style="margin-left: 1.2rem; margin-bottom: 1rem; color: var(--text-muted);">
-            <li>Official graduation from early development phase.</li>
-            <li>Completely overhauled high-resolution game icons and dashboard thumbnails.</li>
-            <li>Updated Google Drive distribution links for faster and more reliable downloads.</li>
-            <li>Minor bug fixes on level collision boundaries.</li>
+            <li>Added new game logo to the game.</li>
           </ul>
         `
       },
@@ -253,12 +250,9 @@
         meta: "Release Date: October 2026 | Status: Optimization Patch",
         image: "Rene.png",
         content: `
-          <p style="margin-bottom: 0.75rem;"><strong>Performance & Bug Fixes in v2.7.2:</strong></p>
+          <p style="margin-bottom: 0.75rem;"><strong>What's New in v2.7.2:</strong></p>
           <ul style="margin-left: 1.2rem; margin-bottom: 1rem; color: var(--text-muted);">
-            <li>Implemented strict frame-rate capping (locked at 60 FPS) to mitigate severe lag issues.</li>
-            <li>Optimized texture rendering pipelines to reduce memory spikes.</li>
-            <li>Addressed intermittent frame drop anomalies on lower-end mobile chipsets.</li>
-            <li>Adjusted monster pathfinding tracking logic.</li>
+            <li>Forcing the game engine to cap the frame rate at 60 FPS to improve performance but still experience some framedrops.</li>
           </ul>
         `
       }
