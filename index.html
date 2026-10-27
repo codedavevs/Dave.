@@ -55,14 +55,14 @@
       <div class="card">
         <div>
           <h3>Programming language</h3>
-          <p>Learning new programming languages and Explore It's Functions to Amaze! .</p>
+          <p>Learning new programming languages and Explore It's Functions to Amaze!.</p>
         </div>
         <button class="btn" onclick="openBlogModal('blog2')">Read More</button>
       </div>
     </div>
   </section>
 
-  <!-- Patch Notes Section (Added in the middle) -->
+  <!-- Patch Notes Section -->
   <section id="patchnotes">
     <h2 class="section-title">Patch Notes</h2>
     <div class="card-grid">
@@ -71,14 +71,14 @@
           <h3>Hero Pack v1.0.2 Logs</h3>
           <p>Bug Fixes And Improve Gameplay.</p>
         </div>
-        <button class="btn" onclick="openPatchModal('patch1')">View</button>
+        <button class="btn" onclick="openPatchModal('patch1')">View Logs</button>
       </div>
       <div class="card">
         <div>
-          <h3>Slendrene v2.7.2 Logs</h3>
+          <h3>Slendrene v2.7.3 Logs</h3>
           <p>Bug Fixes And Improve Gameplay.</p>
         </div>
-        <button class="btn" onclick="openPatchModal('patch2')">View</button>
+        <button class="btn" onclick="openPatchModal('patch2')">View Logs</button>
       </div>
     </div>
   </section>
@@ -90,24 +90,24 @@
       <div class="card">
         <div>
           <h3>Hero Pack v1.0.2</h3>
-          <p>Android - Version 1.0.2 </p>
+          <p>Android - Version 1.0.2</p>
         </div>
-        <button class="btn" onclick="openAppModal('app1')">View</button>
+        <button class="btn" id="btn-app1" onclick="handleAppClick('app1')">🔒 View Patch Notes First</button>
       </div>
       <div class="card">
         <div>
-          <h3>Slendrene v2.7.2</h3>
-          <p>Android - Version 2.7.2 </p>
-          <p>Window - Version 1.0.2 </p>
+          <h3>Slendrene v2.7.3</h3>
+          <p>Android - Version 2.7.3</p>
+          <p>Window - Version 1.1</p>
         </div>
-        <button class="btn" onclick="openAppModal('app2')">View</button>
+        <button class="btn" id="btn-app2" onclick="handleAppClick('app2')">🔒 View Patch Notes First</button>
       </div>
       <div class="card">
         <div>
           <h3>Unknown.</h3>
           <p>Coming Soon!</p>
         </div>
-        <button class="btn" onclick="openAppModal('app3')">View</button>
+        <button class="btn" id="btn-app3" onclick="handleAppClick('app3')">View</button>
       </div>
     </div>
   </section>
@@ -176,6 +176,13 @@
       navLinks.classList.remove('active');
     }
 
+    // Track unlocked patch notes
+    const unlockedApps = {
+      app1: false, 
+      app2: false, 
+      app3: true   
+    };
+
     // App Data
     const appsData = {
       app1: {
@@ -189,13 +196,13 @@
         windowsButtonText: "Download for Windows"
       },
       app2: {
-        title: "Slendrene v2.7.2",
-        meta: "Version: 2.7.2 | Size: 210 MB | Testing Phase | In Development.",
+        title: "Slendrene v2.7.3",
+        meta: "Version: 2.7.3 | Size: 210 MB | Testing Phase | In Development.",
         desc: "Explore the mysterious place of Slendrene and find The balls before Rene Finds You!!",
         image: "Rene.png",
-        downloadUrl: "https://drive.google.com/file/d/1OIg1mgJmtIOAJERtUR5VwQDFDdgsyki0/view?usp=drive_link",
+        downloadUrl: "https://drive.google.com/file/d/1ccMZrhsRiKqipP_hFOKfrR060kc5Hbur/view?usp=drive_link",
         buttonText: "Download APK Now",
-        windowsUrl: "https://drive.google.com/file/d/1Qmz9jqw1HBa8cjQWBfIDsTKvAHUT9QHP/view?usp=drive_link",
+        windowsUrl: "https://drive.google.com/file/d/1HuupPkDOSJjy-kx2_lEStWxJLVULhD7H/view?usp=drive_link",
         windowsButtonText: "Download for Windows"
       },
       app3: {
@@ -235,6 +242,7 @@
     // Patch Notes Data
     const patchData = {
       patch1: {
+        appKey: "app1",
         title: "Hero Pack v1.0.2 - Patch Notes",
         meta: "Release Date: October 2026 | Status: Stable Build",
         image: "Hero.PNG",
@@ -246,17 +254,47 @@
         `
       },
       patch2: {
-        title: "Slendrene v2.7.2 - Patch Notes",
-        meta: "Release Date: October 2026 | Status: Optimization Patch",
-        image: "Rene.png",
+        appKey: "app2",
+        title: "Slendrene v2.7.3 - Patch Notes",
+        meta: "Patch Date: October 27 | Status: Optimization Patch",
+        image: "2.7.3.png",
         content: `
-          <p style="margin-bottom: 0.75rem;"><strong>What's New in v2.7.2:</strong></p>
+          <p style="margin-bottom: 0.75rem;"><strong>What's New in v2.7.3: Android and Windows</strong></p>
           <ul style="margin-left: 1.2rem; margin-bottom: 1rem; color: var(--text-muted);">
-            <li>Forcing the game engine to cap the frame rate at 60 FPS to improve performance but still experience some framedrops.</li>
+            <li>Fix Controller Layout For Mobile Devices. Maybe!</li>
+            <li>I Adjust The Character's Interference to make look good not a capsule</li>
+            <li>Improve World Environment Bigger maps</li>
+            <li>Fix and Change Fps meter To look better</li>
+            <li>Improve Performance on Lower End Devices it can reach to 90 to 120 fps</li>
+            <li>Improve Animation Death when You Die</li>
           </ul>
         `
       }
     };
+
+    function handleAppClick(appKey) {
+      if (!unlockedApps[appKey]) {
+        document.getElementById("modalTitle").innerText = "🔒 Download Locked";
+        document.getElementById("modalMeta").innerText = "Action Required";
+        document.getElementById("modalImgContainer").style.display = "none";
+        document.getElementById("modalBody").innerHTML = `<p style="font-size: 1.05rem; color: var(--text-color);">Please look at the patch notes before you unlock it!</p>`;
+        
+        document.getElementById("modalFooter").innerHTML = `
+          <button class="btn" onclick="scrollToPatchNotes()">View Patch Notes</button>
+          <button class="btn" style="background-color: var(--border-color); color: var(--text-color);" onclick="closeModal()">Close</button>
+        `;
+        
+        document.getElementById("infoModal").style.display = "flex";
+        document.body.classList.add("modal-open");
+      } else {
+        openAppModal(appKey);
+      }
+    }
+
+    function scrollToPatchNotes() {
+      closeModal();
+      document.getElementById('patchnotes').scrollIntoView({ behavior: 'smooth' });
+    }
 
     function openAppModal(appKey) {
       const app = appsData[appKey];
@@ -324,9 +362,21 @@
         imgContainer.style.display = "none";
       }
 
-      document.getElementById("modalFooter").innerHTML = `<button class="btn" onclick="closeModal()">Close Patch Notes</button>`;
+      document.getElementById("modalFooter").innerHTML = `<button class="btn" onclick="unlockDownload('${patch.appKey}')">Close & Unlock Download</button>`;
       document.getElementById("infoModal").style.display = "flex";
       document.body.classList.add("modal-open");
+    }
+
+    function unlockDownload(appKey) {
+      if (appKey) {
+        unlockedApps[appKey] = true;
+        const btnElem = document.getElementById(`btn-${appKey}`);
+        if (btnElem) {
+          btnElem.innerText = "View";
+          btnElem.style.backgroundColor = "var(--accent-color)";
+        }
+      }
+      closeModal();
     }
 
     function closeModal() {

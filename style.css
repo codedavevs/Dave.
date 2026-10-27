@@ -148,6 +148,7 @@ section {
   line-height: 1.15;
   background: linear-gradient(135deg, #ffffff 0%, var(--accent-color) 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: -0.02em;
 }
@@ -178,7 +179,7 @@ section {
   background: linear-gradient(90deg, var(--border-hover) 0%, transparent 100%);
 }
 
-/* Custom Buttons with Softer, Slower Animations */
+/* Custom Buttons with Smooth Animations */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -192,7 +193,7 @@ section {
   border: none;
   cursor: pointer;
   font-size: 0.95rem;
-  transition: all 2.0s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 4px 14px var(--accent-glow);
   touch-action: manipulation;
   position: relative;
@@ -207,7 +208,7 @@ section {
   box-shadow: 0 6px 24px rgba(56, 189, 248, 0.4);
 }
 
-/* Click / Press Animation State (Smoother and gentler) */
+/* Click / Press Animation State */
 .btn:active {
   transform: translateY(1px) scale(0.96);
   box-shadow: 0 2px 10px rgba(56, 189, 248, 0.2);
