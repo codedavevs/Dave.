@@ -62,14 +62,14 @@
     </div>
   </section>
 
-  <!-- Patch Notes Section -->
+  <!-- Patch Notes Section (Added Coming Soon card) -->
   <section id="patchnotes">
     <h2 class="section-title">Patch Notes</h2>
     <div class="card-grid">
       <div class="card">
         <div>
-          <h3>Hero Pack v1.0.2 Logs</h3>
-          <p>Bug Fixes And Improve Gameplay.</p>
+          <h3>Hero Pack V2</h3>
+          <p>Under Development.</p>
         </div>
         <button class="btn" onclick="openPatchModal('patch1')">View Logs</button>
       </div>
@@ -80,6 +80,13 @@
         </div>
         <button class="btn" onclick="openPatchModal('patch2')">View Logs</button>
       </div>
+      <div class="card">
+        <div>
+          <h3>Unknown Logs</h3>
+          <p>Coming Soon!</p>
+        </div>
+        <button class="btn" onclick="openPatchModal('patch3')">View Logs</button>
+      </div>
     </div>
   </section>
 
@@ -89,10 +96,10 @@
     <div class="card-grid">
       <div class="card">
         <div>
-          <h3>Hero Pack v1.0.2</h3>
-          <p>Android - Version 1.0.2</p>
+          <h3>Hero Pack V2</h3>
+          <p>Android - Version Unknown</p>
         </div>
-        <button class="btn" id="btn-app1" onclick="handleAppClick('app1')">🔒 View Patch Notes First</button>
+        <button class="btn" id="btn-app1" onclick="handleAppClick('app1')">View</button>
       </div>
       <div class="card">
         <div>
@@ -176,22 +183,22 @@
       navLinks.classList.remove('active');
     }
 
-    // Track unlocked patch notes
+    // Independent lock/unlock states for each app tab
     const unlockedApps = {
-      app1: false, 
-      app2: false, 
-      app3: true   
+      app1: true,   
+      app2: false,  
+      app3: true    
     };
 
     // App Data
     const appsData = {
       app1: {
-        title: "Hero Pack v1.0.2",
-        meta: "Version: 1.0.2 | Size: 31 MB | Leave Development Phase",
+        title: "Hero Pack V2",
+        meta: "Version: Unknown | Size: 0 MB | Under Development ",
         desc: "A classic old game just like the Super Mario Game but different Assets Download and Explore the game.",
         image: "Hero.PNG",
-        downloadUrl: "https://drive.google.com/file/d/1N1-Rft35AF13iVY9mjGbNvbrE7OreHR5/view?usp=drive_link",
-        buttonText: "Download APK Now",
+        downloadUrl: "#",
+        buttonText: "Coming Soon",
         windowsUrl: "#",
         windowsButtonText: "Download for Windows"
       },
@@ -243,13 +250,13 @@
     const patchData = {
       patch1: {
         appKey: "app1",
-        title: "Hero Pack v1.0.2 - Patch Notes",
-        meta: "Release Date: October 2026 | Status: Stable Build",
+        title: "Hero Pack V2 - Patch Notes",
+        meta: "Release Date: Unknown | Status: Under Development.",
         image: "Hero.PNG",
         content: `
-          <p style="margin-bottom: 0.75rem;"><strong>What's New in v1.0.2:</strong></p>
+          <p style="margin-bottom: 0.75rem;"><strong>What's New in V2:</strong></p>
           <ul style="margin-left: 1.2rem; margin-bottom: 1rem; color: var(--text-muted);">
-            <li>Added new game logo to the game.</li>
+            <li>Under Development.</li>
           </ul>
         `
       },
@@ -269,8 +276,36 @@
             <li>Improve Animation Death when You Die</li>
           </ul>
         `
+      },
+      patch3: {
+        appKey: "app3",
+        title: "Unknown Project - Patch Notes",
+        meta: "Release Date: Coming Soon | Status: In Planning",
+        image: "",
+        content: `
+          <p style="margin-bottom: 0.75rem;"><strong>Coming Soon:</strong></p>
+          <p style="color: var(--text-muted);">Details for this project will be revealed soon. Stay tuned!</p>
+        `
       }
     };
+
+    // Initialize button states independently on page load
+    function updateAllDownloadButtons() {
+      for (const appKey in unlockedApps) {
+        const btnElem = document.getElementById(`btn-${appKey}`);
+        if (btnElem) {
+          if (unlockedApps[appKey]) {
+            btnElem.innerText = "View";
+            btnElem.style.backgroundColor = "var(--accent-color)";
+          } else {
+            btnElem.innerText = "🔒 View Patch Notes First";
+            btnElem.style.backgroundColor = "var(--accent-color)";
+          }
+        }
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', updateAllDownloadButtons);
 
     function handleAppClick(appKey) {
       if (!unlockedApps[appKey]) {
@@ -362,7 +397,12 @@
         imgContainer.style.display = "none";
       }
 
-      document.getElementById("modalFooter").innerHTML = `<button class="btn" onclick="unlockDownload('${patch.appKey}')">Close & Unlock Download</button>`;
+      if (unlockedApps[patch.appKey]) {
+        document.getElementById("modalFooter").innerHTML = `<button class="btn" onclick="closeModal()">Close</button>`;
+      } else {
+        document.getElementById("modalFooter").innerHTML = `<button class="btn" onclick="unlockDownload('${patch.appKey}')">Close & Unlock Download</button>`;
+      }
+      
       document.getElementById("infoModal").style.display = "flex";
       document.body.classList.add("modal-open");
     }
@@ -370,11 +410,7 @@
     function unlockDownload(appKey) {
       if (appKey) {
         unlockedApps[appKey] = true;
-        const btnElem = document.getElementById(`btn-${appKey}`);
-        if (btnElem) {
-          btnElem.innerText = "View";
-          btnElem.style.backgroundColor = "var(--accent-color)";
-        }
+        updateAllDownloadButtons();
       }
       closeModal();
     }
